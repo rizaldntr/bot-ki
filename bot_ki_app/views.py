@@ -6,7 +6,6 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 import os
-import json
 
 # line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 line_bot_api = LineBotApi(os.environ.get('LINE_CHANNEL_ACCESS_TOKEN', "NULL"))
@@ -27,18 +26,13 @@ def callback(request):
             return HttpResponseBadRequest()
 
         for event in events:
-            print (event)
-<<<<<<< HEAD
-            event_json = json.loads(event)
-            profile = line_bot_api.get_profile(event_json['source']['userId'])
-=======
-            profile = line_bot_api.get_profile(event.source.userId)
->>>>>>> parent of cfd7d0f... debug source
-            reply_message_txt = "Halo " + profile.display_name
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=reply_message_txt)
-            )
+            print (event.source.userId)
+            # profile = line_bot_api.get_profile(event.source.userId)
+            # reply_message_txt = "Halo " + profile.display_name
+            # line_bot_api.reply_message(
+            #     event.reply_token,
+            #     TextSendMessage(text=reply_message_txt)
+            # )
 
         return HttpResponse()
     else:
