@@ -25,7 +25,10 @@ SECRET_KEY = '_z7_y^v_e#1)_ye87ft@0of9%%_8ff+f(c@s@^58ql7t9g2s7c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sulang-staging.herokuapp.com',
+    'localhost',
+]
 
 
 # Application definition
