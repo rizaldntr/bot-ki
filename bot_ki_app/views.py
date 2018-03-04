@@ -26,14 +26,14 @@ def callback(request):
             return HttpResponseBadRequest()
 
         for event in events:
-            print (event.source.user_id)
-
-            # profile = line_bot_api.get_profile(event.source.userId)
-            # reply_message_txt = "Halo " + profile.display_name
-            # line_bot_api.reply_message(
-            #     event.reply_token,
-            #     TextSendMessage(text=reply_message_txt)
-            # )
+            group_id = event.source.group_id
+            user_id = event.source.user_id
+            profile = line_bot_api.get_group_member_profile(group_id, user_id)
+            reply_message_txt = "Halo " + profile.display_name
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply_message_txt)
+            )
 
         return HttpResponse()
     else:
