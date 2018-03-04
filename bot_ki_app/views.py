@@ -26,7 +26,7 @@ def callback(request):
             return HttpResponseBadRequest()
 
         for event in events:
-            print (event.source.type)
+            print (event.source.user_id)
 
             # profile = line_bot_api.get_profile(event.source.userId)
             # reply_message_txt = "Halo " + profile.display_name
