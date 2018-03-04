@@ -27,9 +27,8 @@ def callback(request):
 
         for event in events:
             print (event)
-            print (event.source)
-            profile = line_bot_api.get_profile(event.source.userId)
-            reply_message_txt = "Halo "
+            profile = line_bot_api.get_profile(event.source['userId'])
+            reply_message_txt = "Halo " + profile.display_name
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_message_txt)
