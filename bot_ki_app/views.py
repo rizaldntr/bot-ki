@@ -28,8 +28,12 @@ def callback(request):
 
         for event in events:
             print (event)
+<<<<<<< HEAD
             event_json = json.loads(event)
             profile = line_bot_api.get_profile(event_json['source']['userId'])
+=======
+            profile = line_bot_api.get_profile(event.source.userId)
+>>>>>>> parent of cfd7d0f... debug source
             reply_message_txt = "Halo " + profile.display_name
             line_bot_api.reply_message(
                 event.reply_token,
